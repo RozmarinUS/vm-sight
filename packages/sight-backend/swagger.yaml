@@ -13,6 +13,8 @@ tags:
     description: "Endpoint API"
   - name: docker
     description: "Docker API"
+  - name: registries
+    description: "Registries API"
 
 securityDefinitions:
   Bearer:

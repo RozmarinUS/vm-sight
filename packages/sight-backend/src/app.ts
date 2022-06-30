@@ -144,7 +144,7 @@ class App {
       apis: ['swagger.yaml', './src/dtos/**/*.ts', './src/controllers/**/*.ts'],
     };
     const specs = swaggerJSDoc(options);
-    this.app.use(['/docs', '/api/docs'], swaggerUi.serve, swaggerUi.setup(specs));
+    this.app.use(['/docs', '/api/docs', '/swagger', '/api/swagger'], swaggerUi.serve, swaggerUi.setup(specs));
   }
 
   private initializeErrorHandling() {

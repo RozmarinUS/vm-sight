@@ -33,7 +33,7 @@ const containersRouter: Array<RouteConfig> = [
     props: true,
     meta: new RouteMeta({ hideInMenu: true }),
     component: () => import('@/views/docker/containers/Index.vue'),
-    beforeEnter: (to, from, next) => dockerResolver(['containers'], to, from, next)
+    beforeEnter: (to, from, next) => dockerResolver(['endpoint', 'containers'], to, from, next)
   }
 ];
 

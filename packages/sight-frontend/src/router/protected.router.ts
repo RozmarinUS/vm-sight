@@ -6,6 +6,7 @@ import usersRouter from '@/router/users.router';
 import endpointsRouter from '@/router/endpoints.router';
 import dockerRouter from '@/router/docker.router';
 import { RouteMeta } from '@/router/router.utils';
+import registriesRouter from '@/router/registries.router';
 
 const routes: Array<RouteConfig> = [
   {
@@ -38,6 +39,15 @@ const routes: Array<RouteConfig> = [
     component: MainLayout,
     children: [
       ...endpointsRouter
+    ]
+  },
+  {
+    path: 'registries',
+    props: true,
+    meta: new RouteMeta({ title: 'registries' }),
+    component: MainLayout,
+    children: [
+      ...registriesRouter
     ]
   },
   {

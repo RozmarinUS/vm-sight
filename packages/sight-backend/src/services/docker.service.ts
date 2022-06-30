@@ -4,7 +4,7 @@ import { BadRequestException, NotFoundException } from '@exceptions';
 import { isWindows } from '@utils/util';
 
 export class DockerService {
-  public service: { endpoint: any; docker: Docker | undefined };
+  public service: { endpoint: any; docker: Docker | undefined | any };
 
   /**
    * Connect to the docker server or via docker socket
@@ -39,13 +39,12 @@ export class DockerService {
 
     let snapshot = {};
     if (this.service.docker) {
-      const info = await this.service.docker.info();
-      const { Volumes } = await this.service.docker.listVolumes();
-      const Images = await this.service.docker.listImages();
-      const Containers = await this.service.docker.listContainers();
-
-      // const Services = await this.service.docker.listServices();
-
+      const [info, Volumes, Images, Containers] = await Promise.all([
+        this.service.docker.info(),
+        this.service.docker.listVolumes(),
+        this.service.docker.listImages(),
+        this.service.docker.listContainers(),
+      ]);
       snapshot = this.constructSnapshot({
         DockerVersion: info.ServerVersion,
         Containers: info.Containers,
@@ -60,7 +59,7 @@ export class DockerService {
         Time: Math.floor(new Date(info.SystemTime).getTime() / 1000),
         TotalCPU: info.NCPU,
         TotalMemory: info.MemTotal,
-        VolumeCount: Volumes.length,
+        VolumeCount: Volumes.Volumes.length,
       });
     }
     return {

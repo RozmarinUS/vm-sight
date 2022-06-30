@@ -88,10 +88,9 @@ class DockerController {
    */
   public getContainerLogs = async (req, res) => {
     const { endpointId, containerId } = req.params;
-    res.set('Content-Type', 'text/plain');
-    const pattern = /\x1B\[([ABCD])/gm;
+    res.set('Content-Type', 'application/octet-stream');
     const logs = await this.dockerService.getContainerLogs(endpointId, containerId, req.query);
-    return res.send(logs.toString().replace(pattern, ''));
+    return res.send(logs);
   };
 
   /**

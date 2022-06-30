@@ -32,6 +32,7 @@
     "envalid": "^7.3.1",
     "express": "^4.17.1",
     "express-http-proxy": "^1.6.3",
+    "express-mung": "^0.5.1",
     "express-ws": "^4.0.0",
     "helmet": "^5.1.0",
     "hpp": "^0.2.3",
@@ -57,6 +58,7 @@
     "swagger-ui-express": "^4.1.6",
     "tsc-alias": "^1.6.7",
     "tslog": "^3.2.2",
+    "typescript-express-openapi": "^1.0.1",
     "uuid": "^8.3.2",
     "winston": "^3.3.3",
     "ws": "^8.6.0"

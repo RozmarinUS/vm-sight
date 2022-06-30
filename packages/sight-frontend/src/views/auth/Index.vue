@@ -12,6 +12,7 @@
             <v-form
               ref="form"
               class="my-10"
+              @onSubmit="login"
               lazy-validation
               v-model="formValid">
               <v-text-field
@@ -41,7 +42,7 @@
           </v-card-text>
           <v-card-actions>
             <v-spacer/>
-            <v-btn large tile color="primary" @click="login" :loading="loading">
+            <v-btn type="submit" large tile color="primary" @click="login" :loading="loading">
               Login
             </v-btn>
           </v-card-actions>

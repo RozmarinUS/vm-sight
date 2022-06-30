@@ -12,18 +12,18 @@ module.exports = {
         type: DataTypes.STRING,
         notNull: true,
       },
-      type: {
-        type: DataTypes.STRING,
-        notNull: true,
-      },
       name: {
         type: DataTypes.STRING,
         notNull: true,
       },
-      url: {
+      type: {
+        type: DataTypes.STRING,
+        notNull: true,
+      },
+      host: {
         type: DataTypes.STRING,
       },
-      login: {
+      username: {
         type: DataTypes.STRING,
       },
       password: {
@@ -33,16 +33,20 @@ module.exports = {
         type: Sequelize.DATE,
         notNull: true,
       },
-    });
-    await queryInterface.bulkInsert('registries', [
-      {
-        id: 'dockerhub',
-        user_id: 0,
-        type: 'dockerhub',
-        name: 'DockerHub',
-        createdAt: new Date(),
+      updatedAt: {
+        type: Sequelize.DATE,
+        notNull: true,
       },
-    ]);
+    });
+    // await queryInterface.bulkInsert('registries', [
+    //   {
+    //     id: 'dockerhub',
+    //     user_id: 0,
+    //     type: 'dockerhub',
+    //     name: 'DockerHub',
+    //     createdAt: new Date(),
+    //   },
+    // ]);
   },
 
   async down(queryInterface) {

@@ -76,12 +76,13 @@ export default class DockerContainersLogsView extends Vue {
 
   async getLogs (options: object) {
     const logs = await dockerService.getLogs(this.$route.params.endpointId, this.$route.params.id, options);
-
-    const arr: string[] = [];
-    logs.split('\n').forEach((item: string) => {
-      arr.push(item.slice(8));
-    });
-    this.logs = arr.join('\r\n');
+    console.log(logs);
+    // const arr: string[] = [];
+    // console.log(logs);
+    // logs.split('\n').forEach((item: string) => {
+    //   arr.push(item.slice(8));
+    // });
+    // this.logs = arr.join('\r\n');
   }
 
   beforeDestroy () {
